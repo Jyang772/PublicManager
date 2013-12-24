@@ -28,30 +28,35 @@ int main()
 
 void menu()
 {
-	system("cls");
-	int choice;
-	cout << "Welcome to the Public Property Manager." << endl;
-	cout << "=======================================" << endl;
-	cout << "Please select an option: " << endl << endl;
-	cout << "(1) Add/Delete a client. " << endl;
-	cout << "(2) Search for existing client." << endl;
-	cout << "(3) Exit Property Manager." << endl;
-	cin >> choice;
-
-	createDir();				//Creates directory to store .dat files containing client data
-
-	if (choice == 1)
+	bool done = false;
+	while (done != true)
 	{
 		system("cls");
-		createNew();
-	}
-	else if (choice == 2)
-		searchFor();
-	else
-	{
-		cout << "Exiting..." << endl;
-		system("PAUSE");
-		exit(0);
+		int choice;
+		cout << "Welcome to the Public Property Manager." << endl;
+		cout << "=======================================" << endl;
+		cout << "Please select an option: " << endl << endl;
+		cout << "(1) Add/Delete a client. " << endl;
+		cout << "(2) Search for existing client." << endl;
+		cout << "(3) Exit Property Manager." << endl;
+		cin >> choice;
+
+		createDir();				//Creates directory to store .dat files containing client data
+
+		if (choice == 1)
+		{
+			system("cls");
+			createNew();
+		}
+		else if (choice == 2)
+			searchFor();
+		else
+		{
+			cout << "Exiting..." << endl;
+			//system("PAUSE");
+			//exit(0);
+			return;
+		}
 	}
 }
 void createDir()
@@ -76,7 +81,6 @@ void createNew()
 	else if (choice == 2)
 		deleteClient();
 	else
-		menu();
 	return;
 }
 
@@ -139,18 +143,8 @@ void searchFor()
 		editClient(existing_client, existing_prop);
 		break;
 	case 2:
-		{cout << "Returning to main menu..." << endl;
-		cin.ignore();
-		cin.get();
-		menu(); 
-		break; }
+		return;
 	}
-	
-	cout << "Returning to Main Menu..." << endl;
-	cin.ignore();
-	cin.get();
-	menu();
-
 }
 
 
@@ -206,7 +200,7 @@ void addNew()
 	cout << "Returning to menu..." << endl;
 	cin.ignore();
 	cin.get();
-	menu();
+	return;
 
 }
 
@@ -244,7 +238,7 @@ void deleteClient()
 	cout << "Returning to menu..." << endl;
 	cin.ignore();
 	cin.get();
-	menu();
+	return;
 }
 
 
@@ -356,7 +350,8 @@ void editClient(Client& existing_client, Property& existing_prop)
 	switch (choice)
 	{
 	case 1:
-		{editClient(existing_client, existing_prop);
+		{
+			editClient(existing_client, existing_prop);
 		break;
 		}
 	case 2:
@@ -367,8 +362,7 @@ void editClient(Client& existing_client, Property& existing_prop)
 		 }
 	case 3:
 		{
-			menu();
-			break; 
+			return;
 		 }
 
 	}

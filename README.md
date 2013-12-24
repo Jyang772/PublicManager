@@ -1,4 +1,4 @@
-PublicManager
+Public_Manager
 =============
 
 Manages Client and Property Data

@@ -48,7 +48,11 @@ void menu()
 	else if (choice == 2)
 		searchFor();
 	else
+	{
 		cout << "Exiting..." << endl;
+		system("PAUSE");
+		exit(0);
+	}
 }
 void createDir()
 {
@@ -92,7 +96,7 @@ void searchFor()
 	cin >> client_name;
 	
 
-	file_name = "\Sentry_Files\\" + client_name + ".txt";
+	file_name = "\Sentry_Files\\" + client_name + ".dat";
 
 	ifstream existing(file_name);
 
@@ -143,6 +147,8 @@ void searchFor()
 	}
 	
 	cout << "Returning to Main Menu..." << endl;
+	cin.ignore();
+	cin.get();
 	menu();
 
 }
@@ -208,7 +214,7 @@ void outputFile(Client& add, Property& new_prop)
 {
 	string output;
 
-	output = "Sentry_Files\\" + add.getName() + ".txt";
+	output = "Sentry_Files\\" + add.getName() + ".dat";
 	ofstream file(output);
 	file << add.getID() << endl;
 	file << add.getName() << endl;
@@ -231,7 +237,7 @@ void deleteClient()
 	cout << "Enter client name: ";
 	cin >> name;
 
-	file_name = "\Sentry_Files\\" + name + ".txt";
+	file_name = "\Sentry_Files\\" + name + ".dat";
 	remove(file_name.c_str());
 
 

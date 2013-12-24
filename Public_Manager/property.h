@@ -6,6 +6,7 @@ class Property
 {
 
   public:
+	  Property(){ price = 0, bedrooms = 0, gardens = 0, garages = 0, location = "", type = ""; }
 	  int price;
 	  
     int bedrooms;

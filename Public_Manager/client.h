@@ -4,7 +4,7 @@ using namespace std;
 class Client
 {
 public:
-  
+	Client() { name = "", id = 0; }
 	void setID(int);
   int getID();
   void setName(string);
